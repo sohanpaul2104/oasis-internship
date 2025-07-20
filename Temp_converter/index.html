@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Temperature Converter</title>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: #0f172a;
+      color: #f8fafc;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
+    }
+
+    .container {
+      background-color: #1e293b;
+      padding: 30px 40px;
+      border-radius: 16px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.3);
+      text-align: center;
+      width: 100%;
+      max-width: 400px;
+    }
+
+    h1 {
+      color: #38bdf8;
+      margin-bottom: 20px;
+    }
+
+    input, select, button {
+      width: 100%;
+      padding: 12px;
+      margin: 10px 0;
+      border: none;
+      border-radius: 10px;
+      font-size: 1rem;
+    }
+
+    input {
+      background: #f1f5f9;
+    }
+
+    select {
+      background: #e2e8f0;
+    }
+
+    button {
+      background-color: #38bdf8;
+      color: #0f172a;
+      font-weight: bold;
+      cursor: pointer;
+      transition: background-color 0.3s;
+    }
+
+    button:hover {
+      background-color: #0ea5e9;
+    }
+
+    #result {
+      margin-top: 20px;
+      font-size: 1.2rem;
+      color: #facc15;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>🌡️ Temp Converter</h1>
+    <input type="number" id="tempInput" placeholder="Enter temperature" />
+    <select id="unitInput">
+      <option value="celsius">Celsius (°C)</option>
+      <option value="fahrenheit">Fahrenheit (°F)</option>
+      <option value="kelvin">Kelvin (K)</option>
+    </select>
+    <select id="unitOutput">
+      <option value="fahrenheit">Fahrenheit (°F)</option>
+      <option value="celsius">Celsius (°C)</option>
+      <option value="kelvin">Kelvin (K)</option>
+    </select>
+    <button onclick="convertTemp()">Convert</button>
+    <div id="result"></div>
+  </div>
+
+  <script>
+    function convertTemp() {
+      const input = parseFloat(document.getElementById('tempInput').value);
+      const from = document.getElementById('unitInput').value;
+      const to = document.getElementById('unitOutput').value;
+      const resultDiv = document.getElementById('result');
+
+      if (isNaN(input)) {
+        resultDiv.innerHTML = "⚠️ Please enter a valid number!";
+        return;
+      }
+
+      if (from === to) {
+        resultDiv.innerHTML = `✅ Same unit: ${input.toFixed(2)}°`;
+        return;
+      }
+
+      let celsius;
+
+      // Convert to Celsius first
+      switch (from) {
+        case 'celsius': celsius = input; break;
+        case 'fahrenheit': celsius = (input - 32) * 5 / 9; break;
+        case 'kelvin': celsius = input - 273.15; break;
+      }
+
+      let finalTemp;
+
+      // Convert from Celsius to target
+      switch (to) {
+        case 'celsius': finalTemp = celsius; break;
+        case 'fahrenheit': finalTemp = (celsius * 9 / 5) + 32; break;
+        case 'kelvin': finalTemp = celsius + 273.15; break;
+      }
+
+      const unitSymbol = {
+        celsius: "°C",
+        fahrenheit: "°F",
+        kelvin: "K"
+      };
+
+      resultDiv.innerHTML = `✅ Result: ${finalTemp.toFixed(2)} ${unitSymbol[to]}`;
+    }
+  </script>
+</body>
+</html>

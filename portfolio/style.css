@@ -1,0 +1,114 @@
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  margin: 0;
+  padding: 0;
+  background-color: #f0f2f5;
+  color: #333;
+  line-height: 1.6;
+}
+
+
+header {
+  text-align: center;
+  padding: 50px 20px;
+  background: linear-gradient(135deg, #4b6cb7, #182848);
+  color: #fff;
+}
+
+.profile-img {
+  width: 140px;
+  height: 140px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 5px solid #fff;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+  margin-bottom: 15px;
+}
+
+
+section {
+    font-family: Georgia, 'Times New Roman', Times, serif;
+  background: #fff;
+  margin: 30px auto;
+  padding: 25px;
+  border-radius: 12px;
+  max-width: 800px;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+  transition: transform 0.2s ease-in-out;
+}
+
+section:hover {
+  transform: scale(1.01);
+}
+
+section h2 {
+  color: #4b6cb7;
+  border-bottom: 2px solid #eee;
+  padding-bottom: 8px;
+  margin-bottom: 15px;
+}
+
+
+.skills ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  padding: 0;
+  list-style: none;
+}
+
+.skills li {
+  background: #4b6cb7;
+  color: white;
+  padding: 10px 15px;
+  border-radius: 20px;
+  font-size: 0.95rem;
+}
+
+
+.resume a {
+  text-decoration: none;
+  background-color: #182848;
+  color: #fff;
+  padding: 10px 20px;
+  border-radius: 8px;
+  transition: background-color 0.3s;
+}
+
+.resume a:hover {
+  background-color: #4b6cb7;
+}
+
+
+.contact p {
+  margin: 10px 0;
+  font-size: 1.1rem;
+}
+
+
+footer {
+  text-align: center;
+  padding: 20px;
+  background-color: #182848;
+  color: #fff;
+  margin-top: 40px;
+}
+
+
+@media (max-width: 600px) {
+  .skills ul {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .profile-img {
+    width: 120px;
+    height: 120px;
+  }
+
+  section {
+    margin: 20px;
+    padding: 20px;
+  }
+}
